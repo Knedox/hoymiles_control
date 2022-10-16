@@ -57,6 +57,8 @@ you can [Order it here for 2$](https://cart.jlcpcb.com/quote?edaOrderUrl=https%3
 
 Additionally you need a nRF24L01+ SMD board (Ebay, Aliexpress...) and one 100uF 16V Capacitor
 
+For the pinout see https://circuitpython-nrf24l01.readthedocs.io/en/latest/#pinout (SpiDev mode is used)
+
 
 ## Special thanks to
 https://github.com/lumapu/ahoy
