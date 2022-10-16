@@ -3,6 +3,12 @@ This script allows you to receive and control commands and data from your Hoymil
 
 __WORK IN PROGRESS__
 
+## How to use
+- Get RaspberryPi with nRF24L01+ board
+- pip3 install circuitpython-nrf24l01 Adafruit-Blinka crcmod
+- Modify _inverter_ser_ to your inverters serial number 
+- Optional: modify _nrf.channel_ to one of _[3,23,40,61,75]_ if you dont get a response to the time package
+
 ## What works
 - Receive Packages from Hoymiles
 - Send Control Packages
@@ -14,12 +20,31 @@ __WORK IN PROGRESS__
 - Check CRC's
 
 ## Limitations
-- Currently only one inverter supported
+- Currently you can send/receive just to/from one inverter at a time
 - Data received back from the inverter is checked and assembled but not really parsed yet
 
-## Requirements
-- RaspberryPi with nRF24L01+ board
-- pip3 install circuitpython-nrf24l01 Adafruit-Blinka crcmod
+## Examples
+__setPowerLimit(inverter_serial, 50)__ -> limit power to 50 watt non-persistently
+
+__setPowerLimit(inverter_serial, 50, True)__ -> limit power to 50% of max power non-persistently
+
+__setPowerLimit(inverter_serial, 50, True, True)__ -> limit power to 50% of max power persistently
+
+
+__sendControl(inverter_serial, CMD.OFF)__ -> inverter turns off
+
+__sendControl(inverter_serial, CMD.ON)__ -> inverter turns on
+
+
+__sendTime(inverter_ser)__ -> inverter responds with a complete data package
+
+## Supported inverters
+All inverters of the HM-* series should be supported
+- HM-1500
+- HM-1200
+- HM-800
+- HM-600
+- HM-300 ?
 
 ## Hardware
 For this script to work you need a RaspberryPi with nRF24L01+ board attached to pins 15-24
